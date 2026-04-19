@@ -1,0 +1,43 @@
+# ── 大型資料集（不上傳，需本地自行生成）────────────────────────
+twse_data/
+qlib_data/
+kronos_dataset/
+
+# ── 模型 Checkpoint（改上傳 HuggingFace）──────────────────────
+checkpoints/
+
+# ── Kronos 官方 repo（由 git clone 取得，不納入本 repo）────────
+Kronos/
+
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+venv/
+env/
+.venv/
+
+# ── 分析圖表 / 暫存檔 ────────────────────────────────────────
+*.png
+*.CSV
+*.csv
+*.log
+*.tmp
+
+# ── Jupyter ──────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── OS / IDE ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
