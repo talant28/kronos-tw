@@ -172,6 +172,9 @@ def plot_results(stock_id: str, hist_df: pd.DataFrame, pred_df: pd.DataFrame):
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         import matplotlib.dates as mdates
+        # 設定中文字體（Windows 微軟正黑體，備選微軟雅黑）
+        matplotlib.rcParams["font.family"] = ["Microsoft JhengHei", "Microsoft YaHei", "sans-serif"]
+        matplotlib.rcParams["axes.unicode_minus"] = False
 
         # 只顯示最近 30 個交易日的歷史
         hist_plot = hist_df.iloc[-30:]
@@ -267,9 +270,9 @@ def main():
     # ── Step 3：推論 ───────────────────────────────────────────
     print(f"\n【Step 3/3】預測未來 {args.days} 個交易日...")
 
-    x_timestamp = hist_df.index
+    x_timestamp = hist_df.index.to_series().reset_index(drop=True)
     y_dates     = next_trading_days(hist_df.index[-1], args.days)
-    y_timestamp = pd.DatetimeIndex(y_dates)
+    y_timestamp = pd.Series(pd.DatetimeIndex(y_dates))
 
     pred_df = predictor.predict(
         df          = hist_df,
